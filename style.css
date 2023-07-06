@@ -1,0 +1,31 @@
+@charset "uth-8";
+
+/*for button style */
+
+.bs{
+    font-size: 130px;
+    color:green;
+    width:250px;
+    height: 200px;
+    margin:15px;
+}
+.cs{
+    font-size:130px;
+    width:250px;
+    height: 200px;
+    margin:15px;
+}
+.cis{
+    font-size: 130px;
+}
+.ts{
+    font-size: 130px;
+}
+
+#price{
+    font-size : 150px;
+}
+
+.rs{
+    font-size: 130px;
+}
