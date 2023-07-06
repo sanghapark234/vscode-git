@@ -3,6 +3,7 @@ var myCoin = document.getElementById("myCoin");
 var price = 0;
 var currentInput = 0;
 var change = 0;
+var isButtonClickable = true;
 
 //Button creating function
 function createButton(cost) {
@@ -21,6 +22,7 @@ function displayCurrentInput(){
     input.classList.add("cis");
     if(currentInput >= price){
         change = currentInput-price;
+        isButtonClickable = false;    
         setTimeout(function () {
             alert("good");
             passTo3rdPage();
@@ -36,6 +38,9 @@ function createCoin(value){
     currentInput += value;
     displayCurrentInput();
     });
+    if(!isButtonClickable){
+        coin.disabled = true;
+    }
     myCoin.appendChild(coin);
 }
 
