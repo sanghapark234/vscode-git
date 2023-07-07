@@ -1,4 +1,4 @@
-//Loading <div>
+//Loading <div>s
 var myTicket = document.getElementById("myTicket");
 var myCoin = document.getElementById("myCoin");
 var myGoBack = document.getElementById("myGoBack");
@@ -12,20 +12,7 @@ var change = 0;
 var isCoinClickable = true;
 
 
-function createGoBack(){
-    var goBack = document.createElement("button");
-    goBack.classList.add("bs");
-    goBack.innerHTML = "Go Back";
-    goBack.addEventListener("click", function (){
-        if(current != 0){
-            alert("Take " + current);
-        }
-        window.location.href = "1st.html";
-    });
-    myGoBack.appendChild(goBack);
-    }
-
-// Button creating function
+//----for 1st---------
 function createButton(cost) {
     var ticket = document.createElement("button");
     ticket.classList.add("bs");
@@ -36,7 +23,28 @@ function createButton(cost) {
     });
     myTicket.appendChild(ticket);
 }
+function redirectTo2nd() {
+    window.location.href = "2nd.html?price=" + encodeURIComponent(price);
+}
+//---end of 1st----------
 
+
+//-------------for 2nd--------------
+//-------------for 2nd--------------
+function createGoBack() {
+    var goBack = document.createElement("button");
+    goBack.classList.add("bs");
+    goBack.innerHTML = "Go Back";
+    goBack.addEventListener("click", function () {
+        if (current != 0) {
+            alert("Take " + current);
+        }
+        window.location.href = "1st.html";
+    });
+    myGoBack.appendChild(goBack);
+}
+
+// Prints currentInput and update opens 3rd.html when satisfied
 function displayCurrentInput() {
     myCurrentInput.innerHTML = "Current input: " + current;
     myCurrentInput.classList.add("cis");
@@ -48,7 +56,7 @@ function displayCurrentInput() {
             alert("Good");
             redirectTo3rd();
         }, 800);
-    } 
+    }
 }
 
 function createCoin(value) {
@@ -69,30 +77,10 @@ function disableCoinButtons() {
     }
 }
 
-
-
-// making buttons iteratively
-for (var i = 1; i <= 20; i++) {
-    var cost = i * 30;
-    createButton(cost);
-}
-
-// redirecting 2nd.html with updated price value
-function redirectTo2nd() {
-    window.location.href = "2nd.html?price=" + encodeURIComponent(price);
-}
-
 function redirectTo3rd() {
     window.location.href = "3rd.html?change=" + encodeURIComponent(change);
 }
 
-function displayChange() {
-    var urlParams = new URLSearchParams(window.location.search);
-    var encodedChange = urlParams.get("change");
-    change = decodeURIComponent(encodedChange);
-    var bravo = document.getElementById("bravo");
-    bravo.innerHTML = "Change is: " + change;
-}
 
 // display price and ...
 function displayClickedButtonValue() {
@@ -102,6 +90,19 @@ function displayClickedButtonValue() {
     myRequest.classList.add("rs");
 }
 
+//----------end of 2nd--------------------------------
+//----------end of 2nd--------------------------------
+
+
+//-------------------------for 3rd---------------------------------------
+
+function displayChange() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var encodedChange = urlParams.get("change");
+    change = decodeURIComponent(encodedChange);
+    var bravo = document.getElementById("bravo");
+    bravo.innerHTML = "Change is: " + change;
+}
 
 function displayTakeButton(str) {
     var flag = true; //True when not received yet
@@ -120,8 +121,18 @@ function displayTakeButton(str) {
 
     myTake.appendChild(take);
 }
+//------------------------end of 3rd-----------------------------------------
 
-function initialize2nd(){
+
+//initializers
+function initialize1st() {
+    for (var i = 1; i <= 20; i++) {
+        var cost = i * 30;
+        createButton(cost);
+    }
+}
+
+function initialize2nd() {
     displayClickedButtonValue();
     displayCurrentInput();
     createCoin(500);
@@ -129,4 +140,10 @@ function initialize2nd(){
     createCoin(50);
     createCoin(10);
     createGoBack();
+}
+
+function initialize3rd() {
+    displayChange();
+    displayTakeButton("change");
+    displayTakeButton("ticket");
 }
