@@ -1,32 +1,49 @@
-var myButton = document.getElementById("myButton");
+//Loading <div>
+var myTicket = document.getElementById("myTicket");
 var myCoin = document.getElementById("myCoin");
+var myGoBack = document.getElementById("myGoBack");
+var myRequest = document.getElementById("myRequest");
+var myCurrentInput = document.getElementById("myCurrentInput");
+
+//global
 var price = 0;
-var currentInput = 0;
+var current = 0;
 var change = 0;
 var isCoinClickable = true;
 
 
+function createGoBack(){
+    var goBack = document.createElement("button");
+    goBack.classList.add("bs");
+    goBack.innerHTML = "Go Back";
+    goBack.addEventListener("click", function (){
+        if(current != 0){
+            alert("Take " + current);
+        }
+        window.location.href = "1st.html";
+    });
+    myGoBack.appendChild(goBack);
+    }
 
 // Button creating function
 function createButton(cost) {
-    var button = document.createElement("button");
-    button.classList.add("bs");
-    button.innerHTML = cost;
-    button.addEventListener("click", function () {
+    var ticket = document.createElement("button");
+    ticket.classList.add("bs");
+    ticket.innerHTML = cost;
+    ticket.addEventListener("click", function () {
         price = cost;
         redirectTo2nd();
     });
-    myButton.appendChild(button);
+    myTicket.appendChild(ticket);
 }
 
 function displayCurrentInput() {
-    var input = document.getElementById("currentInput");
-    input.innerHTML = "Current input: " + currentInput;
-    input.classList.add("cis");
+    myCurrentInput.innerHTML = "Current input: " + current;
+    myCurrentInput.classList.add("cis");
 
-    if (currentInput >= price) {
+    if (current >= price) {
         disableCoinButtons();
-        change = currentInput - price;
+        change = current - price;
         setTimeout(function () {
             alert("Good");
             redirectTo3rd();
@@ -39,7 +56,7 @@ function createCoin(value) {
     coin.classList.add("cs");
     coin.innerHTML = value;
     coin.addEventListener("click", function () {
-        currentInput += value;
+        current += value;
         displayCurrentInput();
     });
     myCoin.appendChild(coin);
@@ -81,11 +98,9 @@ function displayChange() {
 function displayClickedButtonValue() {
     var urlParams = new URLSearchParams(window.location.search);
     price = decodeURIComponent(urlParams.get("price"));
-    var result = document.getElementById("result");
-    result.innerHTML = "Please insert: " + price;
-    result.classList.add("rs");
+    myRequest.innerHTML = "Please insert: " + price;
+    myRequest.classList.add("rs");
 }
-
 
 
 function displayTakeButton(str) {
@@ -104,4 +119,14 @@ function displayTakeButton(str) {
     });
 
     myTake.appendChild(take);
+}
+
+function initialize2nd(){
+    displayClickedButtonValue();
+    displayCurrentInput();
+    createCoin(500);
+    createCoin(100);
+    createCoin(50);
+    createCoin(10);
+    createGoBack();
 }
