@@ -5,6 +5,8 @@ var currentInput = 0;
 var change = 0;
 var isCoinClickable = true;
 
+
+
 // Button creating function
 function createButton(cost) {
     var button = document.createElement("button");
@@ -12,7 +14,7 @@ function createButton(cost) {
     button.innerHTML = cost;
     button.addEventListener("click", function () {
         price = cost;
-        passTo2ndPage();
+        redirectTo2nd();
     });
     myButton.appendChild(button);
 }
@@ -26,12 +28,10 @@ function displayCurrentInput() {
         disableCoinButtons();
         change = currentInput - price;
         setTimeout(function () {
-            alert("good");
-            passTo3rdPage();
+            alert("Good");
+            redirectTo3rd();
         }, 800);
-    } else {
-        enableCoinButtons();
-    }
+    } 
 }
 
 function createCoin(value) {
@@ -52,25 +52,20 @@ function disableCoinButtons() {
     }
 }
 
-function enableCoinButtons() {
-    var coinButtons = myCoin.getElementsByTagName("button");
-    for (var i = 0; i < coinButtons.length; i++) {
-        coinButtons[i].disabled = false;
-    }
-}
+
 
 // making buttons iteratively
-for (var i = 1; i <= 30; i++) {
+for (var i = 1; i <= 20; i++) {
     var cost = i * 30;
     createButton(cost);
 }
 
-// redirecting 2nd.html with price variable
-function passTo2ndPage() {
+// redirecting 2nd.html with updated price value
+function redirectTo2nd() {
     window.location.href = "2nd.html?price=" + encodeURIComponent(price);
 }
 
-function passTo3rdPage() {
+function redirectTo3rd() {
     window.location.href = "3rd.html?change=" + encodeURIComponent(change);
 }
 
