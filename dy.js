@@ -33,7 +33,7 @@ function redirectTo2nd() {
 //-------------for 2nd--------------
 function createGoBack() {
     var goBack = document.createElement("button");
-    goBack.classList.add("bs");
+    goBack.classList.add("gbs");
     goBack.innerHTML = "Go Back";
     goBack.addEventListener("click", function () {
         if (current != 0) {
