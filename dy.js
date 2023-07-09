@@ -11,8 +11,6 @@ var current = 0;
 var change = 0;
 var isCoinClickable = true;
 
-//--for index.html----------
-
 //----for 1st---------
 function createButton(cost) {
     var ticket = document.createElement("button");

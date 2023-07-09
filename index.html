@@ -9,7 +9,16 @@
 <body>
     <script src="indexdy.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <div id = "vInput"></div>
+    <h1 style="text-align: center; margin-top: 7%; font-size:5vw;">Ticket Vending Machine Interface</h1>
+    <form id="myForm" onsubmit="submitForm(event)" style = "margin-top: 2%">
+        <label for="numberInput">Subject ID:</label>
+        <input type="text" id="numberInput" required >
+        <br>
+        <label for="charInput">Version(A/B):</label>
+        <input type="text" id="charInput" required>
+        <br>
+        <input type="submit" value="Enter" style = "font-size: 5vw; width: 20vw; height: 5vw;">
+    </form>
     <script>
         initIndex();
     </script>
