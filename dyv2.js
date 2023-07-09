@@ -11,6 +11,8 @@ var current = 0;
 var change = 0;
 var isCoinClickable = true;
 var st;
+var flagChange = false;
+var flagTicket = false;
 
 
 //----for 1st---------
@@ -108,26 +110,27 @@ function displayChange() {
 }
 
 function displayTakeButton(str) {
-    var flag = true; //True when not received yet
     var myTake = document.getElementById("myTake");
     var take = document.createElement("button");
     take.classList.add("takebtn");
     take.innerHTML = "Take the " + str;
-    var onClick = function () {
-        if (flag == true) {
-            alert("You received the " + str);
-            flag = false;
-            take.classList.add("received");
-            take.removeEventListener("click", onClick); 
-        } 
-    }
-    take.addEventListener("click", onClick);
-    if(str =="change" && change==0){
-        flag = false;
-        take.removeEventListener("click", onClick);
+    if (str == "change" && change == 0) {
+        flagChange = true;
         take.classList.add("received");
     }
-    
+    take.addEventListener("click", function () {
+        if (str == "change" && !flagChange) {
+            alert("You received " + change);
+            flagChange = true;
+            detectEnd();
+            take.classList.add("received");
+        } else if (str == "ticket" && !flagTicket) {
+            alert("You received the " + str);
+            flagTicket = true;
+            detectEnd();
+            take.classList.add("received");
+        }
+    });
     myTake.appendChild(take);
 }
 //------------------------end of 3rd-----------------------------------------
@@ -171,3 +174,10 @@ function initialize3rd() {
     displayTakeButton("change");
     displayTakeButton("ticket");
 }
+
+function detectEnd() {
+    if (flagTicket && flagChange) {
+      var timestamp = new Date().getTime();
+      alert(timestamp);
+    }
+  }
