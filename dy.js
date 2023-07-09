@@ -24,7 +24,7 @@ function createButton(cost) {
     myTicket.appendChild(ticket);
 }
 function redirectTo2nd() {
-    window.location.href = "2nd.html?price=" + encodeURIComponent(price);
+    window.location.href = "2ndv1.html?price=" + encodeURIComponent(price);
 }
 //---end of 1st----------
 
@@ -39,7 +39,7 @@ function createGoBack() {
         if (current != 0) {
             alert(current + "is returned");
         }
-        window.location.href = "1st.html";
+        window.location.href = "1stv1.html";
     });
     myGoBack.appendChild(goBack);
 }
@@ -78,7 +78,7 @@ function disableCoinButtons() {
 }
 
 function redirectTo3rd() {
-    window.location.href = "3rd.html?change=" + encodeURIComponent(change);
+    window.location.href = "3rdv1.html?change=" + encodeURIComponent(change);
 }
 
 
