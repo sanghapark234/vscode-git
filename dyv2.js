@@ -49,7 +49,7 @@ function createGoBack() {
 
 // Prints currentInput and update opens 3rd.html when satisfied
 function displayCurrentInput() {
-    myCurrentInput.innerHTML = "Current input: " + current;
+    myCurrentInput.innerHTML = "Current input: <span class='current-style'>" + current + "</span>";
     myCurrentInput.classList.add("cis");
 
     if (current >= price) {
