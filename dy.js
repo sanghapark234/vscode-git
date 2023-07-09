@@ -15,7 +15,7 @@ var isCoinClickable = true;
 //----for 1st---------
 function createButton(cost) {
     var ticket = document.createElement("button");
-    ticket.classList.add("bs");
+    ticket.classList.add("ticket");
     ticket.innerHTML = cost;
     ticket.addEventListener("click", function () {
         price = cost;
@@ -46,8 +46,8 @@ function createGoBack() {
 
 // Prints currentInput and update opens 3rd.html when satisfied
 function displayCurrentInput() {
-    myCurrentInput.innerHTML = "Current input: " + current;
-    myCurrentInput.classList.add("cis");
+    myCurrentInput.innerHTML = "Current input: <span class='current-style'>" + current + "</span>";
+    myCurrentInput.classList.add("cicontent");
 
     if (current >= price) {
         disableCoinButtons();
@@ -61,7 +61,7 @@ function displayCurrentInput() {
 
 function createCoin(value) {
     var coin = document.createElement("button");
-    coin.classList.add("cs");
+    coin.classList.add("coinbtn");
     coin.innerHTML = value;
     coin.addEventListener("click", function () {
         current += value;
@@ -87,7 +87,7 @@ function displayClickedButtonValue() {
     var urlParams = new URLSearchParams(window.location.search);
     price = decodeURIComponent(urlParams.get("price"));
     myRequest.innerHTML = "Please insert: " + price;
-    myRequest.classList.add("rs");
+    myRequest.classList.add("request");
 }
 
 //----------end of 2nd--------------------------------
@@ -108,17 +108,23 @@ function displayTakeButton(str) {
     var flag = true; //True when not received yet
     var myTake = document.getElementById("myTake");
     var take = document.createElement("button");
-    take.classList.add("ts");
+    take.classList.add("takebtn");
     take.innerHTML = "Take the " + str;
-    take.addEventListener("click", function () {
+    var onClick = function () {
         if (flag == true) {
             alert("You received the " + str);
             flag = false;
-        } else {
-            alert("You have already received the " + str);
-        }
-    });
-
+            take.classList.add("received");
+            take.removeEventListener("click", onClick); 
+        } 
+    }
+    take.addEventListener("click", onClick);
+    if(str =="change" && change==0){
+        flag = false;
+        take.removeEventListener("click", onClick);
+        take.classList.add("received");
+    }
+    
     myTake.appendChild(take);
 }
 //------------------------end of 3rd-----------------------------------------
@@ -126,10 +132,14 @@ function displayTakeButton(str) {
 
 //initializers
 function initialize1st() {
-    for (var i = 1; i <= 20; i++) {
-        var cost = i * 30;
-        createButton(cost);
-    }
+    createButton(350);
+    createButton(450);
+    createButton(600);
+    createButton(780);
+    createButton(900);
+    createButton(1040);
+    createButton(1220);
+    createButton(1500);
 }
 
 function initialize2nd() {
