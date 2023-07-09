@@ -10,6 +10,7 @@ var price = 0;
 var current = 0;
 var change = 0;
 var isCoinClickable = true;
+var st;
 
 
 //----for 1st---------
@@ -19,12 +20,14 @@ function createButton(cost, dest) {
     ticket.innerHTML = cost + "<br>" + dest;
     ticket.addEventListener("click", function () {
         price = cost;
-        redirectTo2nd();
+        st = dest;
+        redirectTo2nd(cost, dest);
     });
     myTicket.appendChild(ticket);
 }
-function redirectTo2nd() {
-    window.location.href = "2ndv2.html?price=" + encodeURIComponent(price);
+function redirectTo2nd(price, dest) {
+    window.location.href = "2ndv2.html?price=" 
+    + encodeURIComponent(price) + "&dest=" + encodeURIComponent(dest);
 }
 //---end of 1st----------
 
@@ -86,7 +89,8 @@ function redirectTo3rd() {
 function displayClickedButtonValue() {
     var urlParams = new URLSearchParams(window.location.search);
     price = decodeURIComponent(urlParams.get("price"));
-    myRequest.innerHTML = "Please insert: " + price;
+    st = decodeURIComponent(urlParams.get("dest"));
+    myRequest.innerHTML = "Please insert: " + price + " for " + st;
     myRequest.classList.add("rs");
 }
 
