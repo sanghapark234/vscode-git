@@ -2,17 +2,17 @@
 
 /* 버튼 스타일 */
 
-.gbs {
+.backbtn {
     font-size: 7vw;
     background-color: orange; /* 주황색 배경 */
-    color: #FFFFFF; /* 텍스트 색상 변경 */
+    color: black; /* 텍스트 색상 변경 */
     width: 40%;
-    height: 15vw;
-    margin: 2%;
+    height: 13vw;
+    margin: 1%;
     border-radius: 10px;
 }
 
-.bs {
+.ticket {
     font-size: 4vw;
     background-color: orange; /* 주황색 배경 */
     width: 20%;
@@ -22,30 +22,34 @@
     color: black; /* 텍스트 색상 변경 */
 }
 
-.cs {
-    font-size: 10vw;
+.coinbtn {
+    font-size: 6vw;
     background-color: orange; /* 주황색 배경 */
-    width: 20%;
-    height: 20vw;
-    margin: 2%;
+    width: 13%;
+    height: 13vw;
+    margin: 1%;
     border-radius: 50%;
 }
 
-.cs:disabled {
+.coinbtn:disabled {
     background-color: cyan; /* 비활성화된 상태의 배경색 */
 }
 
-.cis {
-    font-size: 130px;
+.cicontent {
+    font-size: 100px;
     color: blue; /* 텍스트 색상 변경 */
 }
 
-.ts {
-    font-size: 50px;
-    background-color: lime; /* 버튼 배경색 변경 */
-    width: 400px;
-    height: 150px;
-    margin: 15px;
+.takebtn {
+    letter-spacing: -2px;
+    font-size: 4vw;
+    background-color: orange; /* 버튼 배경색 변경 */
+    width: 30%;
+    height: 15vw;
+    margin: 1%;
+}
+.takebtn.received {
+    background-color: cyan;
 }
 
 #price {
@@ -53,7 +57,7 @@
     color: #000000; /* 텍스트 색상 변경 */
 }
 
-.rs {
+.request {
     font-size: 130px;
     color: #000000; /* 텍스트 색상 변경 */
 }
@@ -78,17 +82,20 @@
 }
 
 #myRequest {
-    font-size: 7vw;
+    font-size: 5vw;
+    letter-spacing: -2%;
+    word-spacing: -10%;
     text-align: center; /* 가로 중앙 정렬 */
-    margin-top: 30px; /* 위쪽 여백 추가 */
+    margin: 1%; /* 위쪽 여백 추가 */
     color: orange; /* 텍스트 색상 변경 */
 }
 
 #myCurrentInput {
     font-size: 6vw;
+    letter-spacing: -2%;
     color: #000000;
     text-align: center;
-    margin: 2%;
+    margin: 1%;
     position: relative;
 }
 
@@ -100,9 +107,9 @@
 }
 
 #bravo {
-    font-size: 130px;
-    color: #000000; /* 텍스트 색상 변경 */
+    font-size: 8vw;
     text-align: center; /* 가로 중앙 정렬 */
+    margin: 1%;
 }
 
 #myTake {
@@ -115,4 +122,9 @@
     color: blue; /* 현재 값의 텍스트 색상을 파란색으로 변경 */
     font-weight: bold; /* 텍스트를 굵게 표시 */
     /* 원하는 다른 스타일 속성 추가 */
+}
+
+#text1{
+    font-size: 4vw;
+    text-align: center;
 }
