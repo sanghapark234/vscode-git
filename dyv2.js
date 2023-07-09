@@ -122,6 +122,12 @@ function displayTakeButton(str) {
         } 
     }
     take.addEventListener("click", onClick);
+    if(str =="change" && change==0){
+        flag = false;
+        take.removeEventListener("click", onClick);
+        take.classList.add("received");
+    }
+    
     myTake.appendChild(take);
 }
 //------------------------end of 3rd-----------------------------------------
