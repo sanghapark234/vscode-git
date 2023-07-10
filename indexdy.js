@@ -9,7 +9,7 @@ function submitForm(event) {
     } else if(charValue == 'B'){
         window.location.href = "1stv2.html";
     } else{
-        alert("Enter valid character of version")
+        alert("Enter a valid version");
     }
 
 }
