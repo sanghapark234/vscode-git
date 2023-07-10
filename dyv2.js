@@ -29,7 +29,7 @@ function createButton(cost, dest) {
 }
 function redirectTo2nd(price, dest) {
     window.location.href = "2ndv2.html?price="
-        + encodeURIComponent(price) + "&dest=" + encodeURIComponent(dest);
+        + encodeURIComponent(price) + "&dest=" + encodeURIComponent(dest); 
 }
 //---end of 1st----------
 
@@ -122,12 +122,10 @@ function displayTakeButton(str) {
         if (str == "change" && !flagChange) {
             alert("You received " + change);
             flagChange = true;
-            detectEnd();
             take.classList.add("received");
         } else if (str == "ticket" && !flagTicket) {
             alert("You received the " + str);
             flagTicket = true;
-            detectEnd();
             take.classList.add("received");
         }
     });
@@ -175,9 +173,3 @@ function initialize3rd() {
     displayTakeButton("ticket");
 }
 
-function detectEnd() {
-    if (flagTicket && flagChange) {
-      var timestamp = new Date().getTime();
-      alert(timestamp);
-    }
-  }
