@@ -1,11 +1,9 @@
 //--for index.html----------
-localStorage.clear();
+var time = "";
+
 function submitForm(event) {
     event.preventDefault();
     var charValue = document.getElementById("charInput").value;
-    var numberValue = document.getElementById("numberInput").value;
-    var str = numberValue.toString() + charValue.toString();
-    localStorage.setItem("ID/version", str);
     if(charValue == 'A'){
         window.location.href = "1stv1.html";
     } else if(charValue == 'B'){
@@ -14,4 +12,18 @@ function submitForm(event) {
         alert("Enter valid character of version")
     }
 
+}
+
+function setFileName() {
+    var now = new Date();
+    var h = now.getHours();
+    var m = now.getMinutes();
+    var s = now.getSeconds();
+    time = h.toString()+"_" +m.toString()+ "_"+ s.toString();
+    localStorage.setItem("filename", time);
+}
+
+function initIndex(){
+    localStorage.clear();
+    setFileName();
 }

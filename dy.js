@@ -33,7 +33,6 @@ function createButton(cost) {
 function redirectTo2nd() {
     endTimer();
     calcTotalDuration("dur0");
-    alert("dur0 is " + dur0);
     window.location.href = "2ndv1.html?price=" + encodeURIComponent(price);
 }
 //---end of 1st----------
@@ -219,7 +218,7 @@ function downloadLocalStorage(){
       var value = localStorage.getItem(key);
       localStorageData += key + ": " + value + "\n";
     }
-    downloadFile(localStorageData, localStorage.getItem("ID/version"));
+    downloadFile(localStorageData, localStorage.getItem("filename"));
 }
 function downloadFile(content, filename) {
     var element = document.createElement('a');
