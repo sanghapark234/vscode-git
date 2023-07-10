@@ -12,6 +12,11 @@ var change = 0;
 var isCoinClickable = true;
 flagChange= false;
 flagTicket=false;
+var startTime = 0;
+var endTime = 0;
+var dur0 = 0;
+var dur1 = 0;
+var dur2 = 0;
 
 //----for 1st---------
 function createButton(cost) {
@@ -25,7 +30,9 @@ function createButton(cost) {
     myTicket.appendChild(ticket);
 }
 function redirectTo2nd() {
-    window.location.href = "2ndv1.html?price=" + encodeURIComponent(price);
+    endTimer();
+    dur0 += endTime - startTime;
+    window.location.href = "2ndv1.html?price=" + encodeURIComponent(price) + "&dur0=" + encodeURIComponent(dur0);
 }
 //---end of 1st----------
 
@@ -43,6 +50,12 @@ function createGoBack() {
         window.location.href = "1stv1.html";
     });
     myGoBack.appendChild(goBack);
+}
+function redirectTo1st() {
+    endTimer();
+    dur1 += endTime - startTime;
+    window.location.href = "1stv1.html?dur0=" + encodeURIComponent(dur0) + "&dur1=" + encodeURIComponent(dur1);
+    
 }
 
 // Prints currentInput and update opens 3rd.html when satisfied
@@ -118,12 +131,10 @@ function displayTakeButton(str) {
         if (str == "change" && !flagChange) {
             alert("You received " + change);
             flagChange = true;
-            detectEnd();
             take.classList.add("received");
         } else if (str == "ticket" && !flagTicket) {
             alert("You received the " + str);
             flagTicket = true;
-            detectEnd();
             take.classList.add("received");
         }
     });
@@ -134,6 +145,7 @@ function displayTakeButton(str) {
 
 //initializers
 function initialize1st() {
+    startTimer();
     createButton(350);
     createButton(450);
     createButton(600);
@@ -145,6 +157,7 @@ function initialize1st() {
 }
 
 function initialize2nd() {
+    startTimer();
     displayClickedButtonValue();
     displayCurrentInput();
     createCoin(500);
@@ -155,13 +168,16 @@ function initialize2nd() {
 }
 
 function initialize3rd() {
+    startTimer();
     displayChange();
     displayTakeButton("change");
     displayTakeButton("ticket");
 }
-function detectEnd() {
-    if (flagTicket && flagChange) {
-      var timestamp = new Date().getTime();
-      alert(timestamp);
-    }
-  }
+
+function startTimer(){
+    startTime = new Date().getTime();
+}
+function endTimer(){
+    endTime = new Date().getTime();
+}
+   

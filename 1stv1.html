@@ -11,7 +11,13 @@
     <script src="dy.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script>
-        initialize1st()
+        var dur0 = parseInt(localStorage.getItem("dur0")) || 0;
+        var dur1 = parseInt(localStorage.getItem("dur1")) || 0;
+        dur0 += endTime - startTime;
+        dur1 += dur1;
+        localStorage.setItem("dur0", dur0);
+        localStorage.setItem("dur1", dur1);
+        initialize1st();
     </script>
 </body>
 
