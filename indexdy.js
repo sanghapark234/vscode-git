@@ -4,7 +4,7 @@ var time = "";
 function submitForm(event) {
     event.preventDefault();
     var charValue = document.getElementById("charInput").value;
-    if(charValue == 'A'){
+    if(charValue == 'A' || charValue == 'a'){
         window.location.href = "1stv1.html";
     } else if(charValue == 'B'){
         window.location.href = "1stv2.html";
