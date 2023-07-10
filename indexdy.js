@@ -1,4 +1,5 @@
 //--for index.html----------
+localStorage.clear();
 function submitForm(event) {
     event.preventDefault();
     var numberValue = document.getElementById("numberInput").value;
