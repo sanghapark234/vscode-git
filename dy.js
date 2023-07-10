@@ -14,9 +14,10 @@ flagChange= false;
 flagTicket=false;
 var startTime = 0;
 var endTime = 0;
-var dur0 = 0;
-var dur1 = 0;
-var dur2 = 0;
+var dur0 = "";
+var dur1 = "";
+var dur2 = "";
+
 
 //----for 1st---------
 function createButton(cost) {
@@ -31,8 +32,9 @@ function createButton(cost) {
 }
 function redirectTo2nd() {
     endTimer();
-    dur0 += endTime - startTime;
-    window.location.href = "2ndv1.html?price=" + encodeURIComponent(price) + "&dur0=" + encodeURIComponent(dur0);
+    calcTotalDuration("dur0");
+    alert("dur0 is " + dur0);
+    window.location.href = "2ndv1.html?price=" + encodeURIComponent(price);
 }
 //---end of 1st----------
 
@@ -53,8 +55,8 @@ function createGoBack() {
 }
 function redirectTo1st() {
     endTimer();
-    dur1 += endTime - startTime;
-    window.location.href = "1stv1.html?dur0=" + encodeURIComponent(dur0) + "&dur1=" + encodeURIComponent(dur1);
+    calcTotalDuration("dur1");
+    window.location.href = "1stv1.html";
     
 }
 
@@ -65,6 +67,8 @@ function displayCurrentInput() {
 
     if (current >= price) {
         disableCoinButtons();
+        endTimer();
+        calcTotalDuration("dur1");
         change = current - price;
         setTimeout(function () {
             alert("Good");
@@ -132,10 +136,20 @@ function displayTakeButton(str) {
             alert("You received " + change);
             flagChange = true;
             take.classList.add("received");
+            if(flagTicket && flagChange){
+                endTimer();
+                calcTotalDuration("dur2");
+                downloadLocalStorage();
+            }   
         } else if (str == "ticket" && !flagTicket) {
             alert("You received the " + str);
             flagTicket = true;
             take.classList.add("received");
+            if(flagTicket && flagChange){
+                endTimer();
+                calcTotalDuration("dur2");
+                downloadLocalStorage();
+            }
         }
     });
     myTake.appendChild(take);
@@ -180,4 +194,40 @@ function startTimer(){
 function endTimer(){
     endTime = new Date().getTime();
 }
+
+function calcTotalDuration(str){
+    var dur = endTime-startTime;
+    if(str == "dur0"){
+        dur0 = localStorage.getItem("dur0") || "";
+        dur0 += dur + ".";
+        localStorage.setItem("dur0", dur0);
+    } else if (str == "dur1"){
+        dur1 = localStorage.getItem("dur1") || "";
+        dur1 += dur + ".";
+        localStorage.setItem("dur1", dur1);
+    } else if (str == "dur2"){
+        dur2= localStorage.getItem("dur2") || "";
+        dur2 += dur + ".";
+        localStorage.setItem("dur2", dur2);
+    }
+}
+
+function downloadLocalStorage(){
+    var localStorageData = "";
+    for (var i = 0; i < localStorage.length; i++) {
+      var key = localStorage.key(i);
+      var value = localStorage.getItem(key);
+      localStorageData += key + ": " + value + "\n";
+    }
+    downloadFile(localStorageData, "localStorageData.txt");
+}
+function downloadFile(content, filename) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  }
    
