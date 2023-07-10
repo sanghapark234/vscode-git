@@ -219,7 +219,7 @@ function downloadLocalStorage(){
       var value = localStorage.getItem(key);
       localStorageData += key + ": " + value + "\n";
     }
-    downloadFile(localStorageData, "localStorageData.txt");
+    downloadFile(localStorageData, localStorage.getItem("ID/version"));
 }
 function downloadFile(content, filename) {
     var element = document.createElement('a');
