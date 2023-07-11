@@ -7,19 +7,15 @@
     <title>Index Version1</title>
 
 <body>
-    <script src="indexdy.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="indexv1dy.js"></script>
+    <link rel="stylesheet" type="text/css" href="indexStyle.css">
     <h1 style="text-align: center; margin-top: 2%; font-size:5vw;">Ticket Vending Machine Interface</h1>
     <form id="myForm" onsubmit="submitForm(event)" style="margin-top: 2%">
-        <div>
-            <label for="charInput" style="display: inline-block;">Version(A/B):</label>
-            <input type="text" id="charInput" required style="display: inline-block;">
-        </div>
-        <input type="submit" value="Enter" style="font-size: 5vw; width: 20vw; height: 5vw;">
+        <input id = "enterBtn" type="submit" value="Enter">
     </form>
-    <img src="guide.gif" alt="Guide GIF" style="display: block; margin: 0 auto;">
+    <img id = "umzzal" src="guide.gif" alt="Guide GIF">
+    
     <script>
-        initIndex();
     </script>
 </body>
 

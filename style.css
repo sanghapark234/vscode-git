@@ -1,23 +1,9 @@
 @charset "utf-8";
 
-/*for button style */
 
-#myForm{
-    display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-      background-color: #f2f2f2;
-      border-radius: 8px;
-}
-#numberInput, #charInput {
-    width: 20vw; /* 원하는 너비로 설정 */
-    height: 5vw; /* 원하는 높이로 설정 */
-    font-size: 5vw;
-}
-label{
-    font-size: 4vw;
-}
+
+
+
 #myTicket{
     margin-top: 10%;
     display: flex;
