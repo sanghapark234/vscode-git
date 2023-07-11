@@ -1,0 +1,21 @@
+#umzzal{
+    display: block;
+    margin: 0 auto;
+    width: 35vw;
+    height: 20vw;
+}
+#enterBtn{
+    font-size: 5vw; 
+    width: 20vw; 
+    height: 5vw;
+    background-color: orange;
+}
+
+#myForm{
+    display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      background-color: #f2f2f2;
+      border-radius: 8px;
+}

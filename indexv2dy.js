@@ -1,15 +1,9 @@
-//--for index.html----------
-
 function submitForm(event) {
-    event.preventDefault();
-    var charValue = document.getElementById("charInput").value;
-    if(charValue == 'A' || charValue == 'a'){
-        window.location.href = "1stv1.html";
-    } else if(charValue == 'B' || charValue == 'b'){
-        window.location.href = "1stv2.html";
-    } else{
-        alert("Enter a valid version");
-    }
+    event.preventDefault(); 
+    localStorage.clear();
+    setFileName();
+    window.location.href = "1stv2.html";
+    
 
 }
 
@@ -22,7 +16,7 @@ function setFileName() {
     var min = now.getMinutes();
     var sec = now.getSeconds();
     time = year.toString() + "_" + month.toString()+"_"+day.toString()+"_"+
-    hr.toString()+"_" +min.toString()+ "_"+ sec.toString()+"_A";
+    hr.toString()+"_" +min.toString()+ "_"+ sec.toString()+"_v2";
     localStorage.setItem("filename", time);
 }
 
