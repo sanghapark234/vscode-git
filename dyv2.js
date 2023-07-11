@@ -137,10 +137,20 @@ function displayTakeButton(str) {
             alert("You received " + change);
             flagChange = true;
             take.classList.add("received");
+            if(flagTicket && flagChange){
+                endTimer();
+                calcTotalDuration("dur2");
+                downloadLocalStorage();
+            }   
         } else if (str == "ticket" && !flagTicket) {
             alert("You received the " + str);
             flagTicket = true;
             take.classList.add("received");
+            if(flagTicket && flagChange){
+                endTimer();
+                calcTotalDuration("dur2");
+                downloadLocalStorage();
+            }
         }
     });
     myTake.appendChild(take);

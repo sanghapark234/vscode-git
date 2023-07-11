@@ -3,7 +3,6 @@ function submitForm(event) {
     localStorage.clear();
     setFileName();
     window.location.href = "1stv2.html";
-    
 
 }
 
@@ -18,9 +17,4 @@ function setFileName() {
     time = year.toString() + "_" + month.toString()+"_"+day.toString()+"_"+
     hr.toString()+"_" +min.toString()+ "_"+ sec.toString()+"_v2";
     localStorage.setItem("filename", time);
-}
-
-function initIndex(){
-    localStorage.clear();
-    setFileName();
 }

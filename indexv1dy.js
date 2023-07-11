@@ -17,8 +17,3 @@ function setFileName() {
     hr.toString()+"_" +min.toString()+ "_"+ sec.toString()+"_v1";
     localStorage.setItem("filename", time);
 }
-
-function initIndex(){
-    localStorage.clear();
-    setFileName();
-}
