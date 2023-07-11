@@ -10,8 +10,8 @@ var price = 0;
 var current = 0;
 var change = 0;
 var isCoinClickable = true;
-flagChange= false;
-flagTicket=false;
+var flagChange= false;
+var flagTicket=false;
 var startTime = 0;
 var endTime = 0;
 var dur0 = "";
@@ -48,7 +48,7 @@ function createGoBack() {
         if (current != 0) {
             alert(current + "is returned");
         }
-        window.location.href = "1stv1.html";
+        redirectTo1st();
     });
     myGoBack.appendChild(goBack);
 }
@@ -65,9 +65,9 @@ function displayCurrentInput() {
     myCurrentInput.classList.add("cicontent");
 
     if (current >= price) {
-        disableCoinButtons();
         endTimer();
         calcTotalDuration("dur1");
+        disableCoinButtons();
         change = current - price;
         setTimeout(function () {
             alert("Good");

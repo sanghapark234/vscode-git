@@ -13,6 +13,11 @@ var isCoinClickable = true;
 var st;
 var flagChange = false;
 var flagTicket = false;
+var startTime = 0;
+var endTime = 0;
+var dur0 = "";
+var dur1 = "";
+var dur2 = "";
 
 
 //----for 1st---------
@@ -28,6 +33,8 @@ function createButton(cost, dest) {
     myTicket.appendChild(ticket);
 }
 function redirectTo2nd(price, dest) {
+    endTimer();
+    calcTotalDuration("dur0");
     window.location.href = "2ndv2.html?price="
         + encodeURIComponent(price) + "&dest=" + encodeURIComponent(dest); 
 }
@@ -44,9 +51,14 @@ function createGoBack() {
         if (current != 0) {
             alert("Take " + current);
         }
-        window.location.href = "1stv2.html";
+        redirectTo1st();
     });
     myGoBack.appendChild(goBack);
+}
+function redirectTo1st(){
+    endTimer();
+    calcTotalDuration("dur1");
+    window.location.href = "1stv1.html";
 }
 
 // Prints currentInput and update opens 3rd.html when satisfied
@@ -54,6 +66,8 @@ function displayCurrentInput() {
     myCurrentInput.innerHTML = "Current input: <span class='current-style'>" + current + "</span>";
     myCurrentInput.classList.add("cicontent");
     if (current >= price) {
+        endTimer();
+        calcTotalDuration("dur1");
         disableCoinButtons();
         change = current - price;
         setTimeout(function () {
@@ -136,6 +150,7 @@ function displayTakeButton(str) {
 
 //initializers
 function initialize1st() {
+    startTimer();
     createButton(350, "Aloha");
     createButton(350, "Brand");
     createButton(450, "Cobra");
@@ -158,6 +173,7 @@ function initialize1st() {
 
 
 function initialize2nd() {
+    startTimer();
     displayClickedButtonValue();
     displayCurrentInput();
     createCoin(500);
@@ -168,8 +184,51 @@ function initialize2nd() {
 }
 
 function initialize3rd() {
+    startTimer();
     displayChange();
     displayTakeButton("change");
     displayTakeButton("ticket");
 }
 
+function startTimer(){
+    startTime = new Date().getTime();
+}
+function endTimer(){
+    endTime = new Date().getTime();
+}
+
+function calcTotalDuration(str){
+    var dur = endTime-startTime;
+    if(str == "dur0"){
+        dur0 = localStorage.getItem("dur0") || "";
+        dur0 += dur + ".";
+        localStorage.setItem("dur0", dur0);
+    } else if (str == "dur1"){
+        dur1 = localStorage.getItem("dur1") || "";
+        dur1 += dur + ".";
+        localStorage.setItem("dur1", dur1);
+    } else if (str == "dur2"){
+        dur2= localStorage.getItem("dur2") || "";
+        dur2 += dur + ".";
+        localStorage.setItem("dur2", dur2);
+    }
+}
+
+function downloadLocalStorage(){
+    var localStorageData = "";
+    for (var i = 0; i < localStorage.length; i++) {
+      var key = localStorage.key(i);
+      var value = localStorage.getItem(key);
+      localStorageData += key + ": " + value + "\n";
+    }
+    downloadFile(localStorageData, localStorage.getItem("filename"));
+}
+function downloadFile(content, filename) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  }
