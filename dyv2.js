@@ -49,7 +49,7 @@ function createGoBack() {
     goBack.innerHTML = "Go Back";
     goBack.addEventListener("click", function () {
         if (current != 0) {
-            alert("Take " + current);
+            alert(current + "is returned");
         }
         redirectTo1st();
     });
