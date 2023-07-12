@@ -70,7 +70,6 @@ function displayCurrentInput() {
         disableCoinButtons();
         change = current - price;
         setTimeout(function () {
-            alert("Good");
             redirectTo3rd();
         }, 800);
     }
@@ -132,7 +131,6 @@ function displayTakeButton(str) {
     }
     take.addEventListener("click", function () {
         if (str == "change" && !flagChange) {
-            alert("You received " + change);
             flagChange = true;
             take.classList.add("received");
             if(flagTicket && flagChange){
@@ -141,7 +139,6 @@ function displayTakeButton(str) {
                 downloadLocalStorage();
             }   
         } else if (str == "ticket" && !flagTicket) {
-            alert("You received the " + str);
             flagTicket = true;
             take.classList.add("received");
             if(flagTicket && flagChange){
